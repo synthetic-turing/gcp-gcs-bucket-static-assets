@@ -1,0 +1,1 @@
+# gcp-gcs-bucket-static-assets
