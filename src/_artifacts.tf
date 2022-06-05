@@ -1,7 +1,7 @@
 locals {
   data_infrastructure = {
-    grn = google_storage_bucket.main.id
-    url = local.full_url
+    name         = google_storage_bucket.main.id
+    function_url = local.full_url
   }
   data_security = {
   }
