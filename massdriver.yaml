@@ -43,9 +43,9 @@ connections:
 
 artifacts:
   required:
-    - static_assets
+    - static_bucket
   properties:
-    static_assets:
+    static_bucket:
       $ref: massdriver/gcp-bucket-https
 
 ui:
