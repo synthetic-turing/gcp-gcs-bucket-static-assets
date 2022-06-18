@@ -4,6 +4,20 @@ locals {
     url = local.full_url
   }
   data_security = {
+    iam = {
+      read = {
+        role      = "roles/storage.objectViewer"
+        condition = "resource.name.startsWith(\"projects/_/buckets/${google_storage_bucket.main.name}\")"
+      }
+      "read/write" = {
+        role      = "roles/storage.objectCreator"
+        condition = "resource.name.startsWith(\"projects/_/buckets/${google_storage_bucket.main.name}\")"
+      }
+      admin = {
+        role      = "roles/storage.objectAdmin"
+        condition = "resource.name.startsWith(\"projects/_/buckets/${google_storage_bucket.main.name}\")"
+      }
+    }
   }
   specs_gcp = {
     project = local.gcp_project_id
