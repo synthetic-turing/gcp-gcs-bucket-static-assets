@@ -1,7 +1,7 @@
 schema: draft-07
 name: gcp-gcs-bucket-static-assets
 description: "GCP Static Assets Bucket"
-ref: github.com/massdriver-cloud/massdriver-bundles
+ref: github.com/massdriver-cloud/gcp-gcs-bucket-static-assets
 access: public
 type: bundle
 
