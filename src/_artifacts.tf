@@ -19,7 +19,7 @@ locals {
     service = "Cloud Storage"
   }
 
-  artifact_static_bucket = {
+  artifact_gcs_bucket = {
     data = {
       infrastructure = local.data_infrastructure
       security       = local.data_security
@@ -30,9 +30,9 @@ locals {
   }
 }
 
-resource "massdriver_artifact" "static_bucket" {
-  field                = "static_bucket"
+resource "massdriver_artifact" "gcs_bucket" {
+  field                = "gcs_bucket"
   provider_resource_id = google_storage_bucket.main.id
-  name                 = "HTTPS Bucket ${var.md_metadata.name_prefix} ${google_storage_bucket.main.id}"
-  artifact             = jsonencode(local.artifact_static_bucket)
+  name                 = "GCS Bucket ${var.md_metadata.name_prefix} ${google_storage_bucket.main.id}"
+  artifact             = jsonencode(local.artifact_gcs_bucket)
 }

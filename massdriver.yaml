@@ -28,10 +28,10 @@ connections:
 
 artifacts:
   required:
-    - static_bucket
+    - gcs_bucket
   properties:
-    static_bucket:
-      $ref: massdriver/gcp-bucket-https
+    gcs_bucket:
+      $ref: massdriver/gcp-gcs-bucket
 
 ui:
   ui:order:
