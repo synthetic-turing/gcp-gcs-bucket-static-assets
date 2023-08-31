@@ -1,7 +1,6 @@
 locals {
   data_infrastructure = {
     id  = google_storage_bucket.main.name
-    url = local.full_url
   }
   data_security = {
     iam = {

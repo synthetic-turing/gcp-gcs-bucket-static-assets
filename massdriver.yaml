@@ -1,39 +1,28 @@
 schema: draft-07
-name: gcp-gcs-bucket-static-assets
-description: "GCP Static Assets Bucket"
-source_url: github.com/massdriver-cloud/gcp-gcs-bucket-static-assets
-access: public
+name: gcp-gcs-bucket
+description: "GCP Cloud Storage Bucket"
+source_url: github.com/synthetic-turing/gcp-gcs-bucket-static-assets
+access: private
 type: bundle
 
 params:
-  examples:
-    - __name: Example
-      cloud_dns_managed_zone:
-        name: my-foobar-zone
   required:
-    - subdomain
-    - cloud_dns_managed_zone
+    - bucket
   properties:
-    subdomain:
-      type: string
-      title: Subdomain
-      minLength: 1
-      maxLength: 60
-      pattern: "^[a-z-*]+$"
-      message:
-        pattern: "Subdomain must be lowercase letters, numbers, or dashes"
-      description: Subdomain for the static bucket
-      default: assets
-    cloud_dns_managed_zone:
-      $ref: https://raw.githubusercontent.com/massdriver-cloud/artifact-definitions/main/definitions/types/gcp-cloud-dns-managed-zone.json
+    bucket:
+      type: object
+      title: Bucket
+      required:
+        - region
+      properties:
+        region:
+          $ref: https://raw.githubusercontent.com/massdriver-cloud/artifact-definitions/main/definitions/types/gcp-region.json
+          $md.immutable: true
 
 connections:
   required:
-    - subnetwork
     - gcp_authentication
   properties:
-    subnetwork:
-      $ref: massdriver/gcp-subnetwork
     gcp_authentication:
       $ref: massdriver/gcp-service-account
 
@@ -46,10 +35,10 @@ artifacts:
 
 ui:
   ui:order:
-    - subdomain
-    - cloud_dns_managed_zone
-    - "*"
-  cloud_dns_managed_zone:
-    name:
-      ui:field: dnsZonesDropdown
-      cloud: gcp
+    - bucket
+  bucket:
+    ui:order:
+      - "*"
+    region:
+      ui:field: supportedCloudLocationsDropdown
+      cloudService: gcp
