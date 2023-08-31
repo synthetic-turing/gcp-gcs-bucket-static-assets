@@ -21,7 +21,7 @@ terraform {
 }
 
 locals {
-  gcp_region     = var.subnetwork.specs.gcp.region
+  gcp_region     = var.bucket.region
   gcp_project_id = var.gcp_authentication.data.project_id
 }
 
