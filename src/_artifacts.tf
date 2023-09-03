@@ -9,7 +9,7 @@ locals {
         condition = "resource.name.startsWith(\"projects/_/buckets/${google_storage_bucket.main.name}\")"
       }
       read_write = {
-        role      = "roles/storage.objectCreator"
+        role      = "roles/storage.objectUser"
         condition = "resource.name.startsWith(\"projects/_/buckets/${google_storage_bucket.main.name}\")"
       }
     }
